@@ -116,7 +116,7 @@ ml-project/
 
 
 ---Modelo campeão: model_LogisticRegression (Score composto = 0.7521)
-                        [713 320]
+                        [713 320] <br>
                         [ 52 320] excelente recall de  0.8602, modelo muito bom para detectar clientes com real probabilidade de churn, possibilitando medidas para resolução do problema.
 
 
