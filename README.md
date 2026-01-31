@@ -30,13 +30,13 @@ Streamlit: Interface amigável para consumo real do modelo.
 
 ## Estrutura do Projeto
 ```
-modelos.ipynb                # Notebook exploratrio e de prototipao
+modelos.ipynb                # Notebook exploratório e de prototipao
 Telco_Customer_Churn.csv     # Base de dados original
 ml-project/
-  requirements.txt           # Dependncias Python
+  requirements.txt           # Dependências Python
   submit_job.py              # Submisso do pipeline de treino
   config/
-    grid_search.yml          # Configurao de hiperparmetros
+    grid_search.yml          # Configuraçãoo de hiperparmetros
   environments/
     conda.yml                # Ambiente reprodutvel para Azure ML
   pipelines/
@@ -45,7 +45,7 @@ ml-project/
     data_prep/               # Scripts de preparao de dados
     deploy/
       deploy_model.py        # Deploy do modelo em endpoint
-      score.py               # Script de inferncia para Azure ML
+      score.py               # Script de inferência para Azure ML
       test_endpoint.py       # Teste automatizado do endpoint
     evaluation/
       evaluate_gold.py       # Avaliao do modelo
@@ -88,16 +88,6 @@ Excelente capacidade de detectar clientes com real probabilidade de churn, permi
 - **Segurança:** Autenticação via Azure, segredos protegidos, governança de recursos.
 - **Flexibilidade:** Modularidade dos scripts permite fácil adaptação para outros casos de uso.
 - **Aderência ao mercado:** Estrutura e práticas alinhadas com demandas reais de empresas que usam Azure ML, CI/CD e governança de dados/modelos.
-
-## Como Executar
-1. Configure os segredos do Azure no GitHub (.streamlit/secrets.toml para Streamlit).
-2. Execute o pipeline via GitHub Actions ou localmente com submit_job.py.
-3. Realize o deploy do modelo com deploy_model.py.
-4. Teste o endpoint com test_endpoint.py ou via Streamlit.
-
-## Observações
-- O projeto está pronto para ser expandido com monitoramento, explainability, retraining e integração com outros sistemas.
-- Todos os scripts e assets seguem padrões de mercado para facilitar auditoria, compliance e integração contínua.
 
 ---
 
