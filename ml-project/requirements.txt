@@ -1,0 +1,37 @@
+# ===================================================================
+# ARQUIVO DE REQUIREMENTS - VERSÃO FINAL ESTÁVEL PARA DEPLOY
+# ===================================================================
+
+# --- Processamento de Dados ---
+pandas==2.0.3
+numpy==1.24.3
+pyarrow==12.0.1
+
+# --- Machine Learning (VITAL) ---
+scikit-learn==1.3.0
+imbalanced-learn==0.11.0
+joblib==1.3.2
+
+# --- Integração MLflow & Azure ML ---
+mlflow==2.8.1
+azureml-mlflow==1.53.0
+azureml-core==1.53.0
+azure-ai-ml==1.11.1
+azure-identity==1.14.0
+inference-schema==1.5.1
+
+# --- FIX: ERRO 502 E CRASH DO CONTAINER ---
+
+# Resolve: ModuleNotFoundError: No module named 'azureml.ai'
+azureml-ai-monitoring
+
+# Resolve: AttributeError: module 'werkzeug' has no attribute '__version__'
+# Pinando versões estáveis compatíveis com o servidor de inferência da Azure
+werkzeug==2.2.3
+flask==2.2.5
+
+# Motor essencial para o servidor de pontuação (scoring)
+azureml-inference-server-http
+
+# --- Utilidades ---
+pyyaml==6.0.1

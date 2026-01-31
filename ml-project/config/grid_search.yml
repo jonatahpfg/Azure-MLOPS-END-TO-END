@@ -1,0 +1,65 @@
+# ===================================================================
+# CONFIGURAÇÃO DE HIPERPARÂMETROS PARA GRID SEARCH
+# Projeto: Telco Customer Churn Prediction
+# Objetivo: Definir grids de busca para múltiplos modelos
+# ===================================================================
+
+# -------------------------------------------------------------------
+# RANDOM FOREST (MODELO ROBUSTO, GRID CONTROLADO)
+# Bom equilíbrio entre custo computacional e performance
+# -------------------------------------------------------------------
+RandomForest:
+  n_estimators: [200, 300]
+  max_depth: [10, 20, 25 ]
+  min_samples_split: [2, 5]
+  min_samples_leaf: [1, 2]
+  max_features: ['sqrt']
+  random_state: [42]
+
+# -------------------------------------------------------------------
+# XGBOOST
+# scale_pos_weight DEVE ser calculado fora do grid
+# -------------------------------------------------------------------
+XGBoost:
+  n_estimators: [100, 200]      
+  max_depth: [3, 4, 5]          
+  learning_rate: [0.05, 0.1]    
+  subsample: [0.8]              
+  colsample_bytree: [0.8]       
+  gamma: [0, 0.1]               
+  reg_lambda: [1]          
+  scale_pos_weight: [1.0]        
+
+# -------------------------------------------------------------------
+# LIGHTGBM (GRID CONTROLADO – FOCO EM GENERALIZAÇÃO)
+# -------------------------------------------------------------------
+LightGBM:
+  n_estimators: [100, 200]
+  max_depth: [5, 10]
+  learning_rate: [0.05, 0.1]
+  num_leaves: [31, 50]
+  subsample: [0.8, 1.0]
+  colsample_bytree: [0.8, 1.0]
+  min_child_samples: [20, 40]
+  reg_lambda: [0, 1]
+  random_state: [42]
+  verbose: [-1]
+
+# LOGISTIC REGRESSION
+# class_weight='balanced' ajusta automaticamente os pesos
+LogisticRegression:
+  penalty: ['l1', 'l2']
+  C: [0.001, 0.01, 0.1, 1, 10, 100]
+  solver: ['liblinear', 'saga']
+  max_iter: [1000, 2000]
+  random_state: [42]
+
+# ===================================================================
+# CONFIGURAÇÕES GLOBAIS DO GRID SEARCH
+# ===================================================================
+grid_search_config:
+  cv: 3  # Cross-validation com 5 folds
+  scoring: 'f1'  # Métrica de otimização (F1-Score para desbalanceamento)
+  n_jobs: 1  # Usar 1 núcleo disponível
+  verbose: 2  # Nível de verbosidade
+  refit: true  # Re-treinar com melhores parâmetros em todo dataset
