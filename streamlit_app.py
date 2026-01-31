@@ -3,6 +3,7 @@ import requests
 import pandas as pd
 import os
 
+
 def main():
     st.title('Predição de Churn de Clientes Telco')
     st.write('Preencha os dados do cliente para prever o churn usando o modelo em produção.')
