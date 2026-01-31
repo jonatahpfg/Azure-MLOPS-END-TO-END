@@ -4,51 +4,51 @@ O projeto segue as práticas mais modernas de automação, governança, rastreab
 O foco é demonstrar como modelos de ML são desenvolvidos, versionados, treinados e disponibilizados em ambiente corporativo utilizando Azure Machine Learning, MLflow e CI/CD.
 
 ## 🎯 Objetivos do Projeto
-Pipeline Profissional: Construir um fluxo automatizado de ML para previsão de churn.
-Práticas de Mercado: Aplicar conceitos de MLOps usados por grandes empresas.
-Domínio Azure: Demonstrar competência técnica no Azure Machine Learning SDK v2.
-Governança: Garantir reprodutibilidade e rastreabilidade total de experimentos.
-Deploy Gerenciado: Disponibilizar o modelo via Managed Online Endpoint.
-Interface de Consumo: Criar uma aplicação Streamlit para usuários finais.
+- Pipeline Profissional: Construir um fluxo automatizado de ML para previsão de churn.
+- Práticas de Mercado: Aplicar conceitos de MLOps usados por grandes empresas.
+- Domínio Azure: Demonstrar competência técnica no Azure Machine Learning SDK v2.
+- Governança: Garantir reprodutibilidade e rastreabilidade total de experimentos.
+- Deploy Gerenciado: Disponibilizar o modelo via Managed Online Endpoint.
+- Interface de Consumo: Criar uma aplicação Streamlit para usuários finais.
 
 ## 🏗️ Arquitetura e Estrutura Medallion
 O projeto organiza o ciclo de vida dos dados em camadas para garantir a integridade do processo:
 
 Camada	Processo	O que visualizar na Azure?
-Bronze	Ingestão	O arquivo bruto Telco_Customer_Churn.csv no Datastore.
-Silver	Preparação (prep.py)	Limpeza e tratamento de nulos salvos como arquivos .parquet
-Gold	Treinamento (train.py)	Modelos treinados e registrados com hiperparâmetros
+- Bronze	Ingestão	O arquivo bruto Telco_Customer_Churn.csv no Datastore.
+- Silver	Preparação (prep.py)	Limpeza e tratamento de nulos salvos como arquivos .parquet
+- Gold	Treinamento (train.py)	Modelos treinados e registrados com hiperparâmetros
 
 ## 🛠️ Infraestrutura e Ferramentas
-Azure Machine Learning (SDK v2): Orquestração completa do ciclo de vida.
-MLflow: Tracking de métricas, parâmetros e registro do modelo (Model Registry).
-Managed Online Endpoints: Hospedagem escalável da API de predição.
-Azure Key Vault: Gestão segura de segredos e autenticação.
-GitHub Actions: Automação total via CI/CD (Pipeline automatizado).
-Conda / Docker: Ambientes isolados e reprodutíveis.
-Streamlit: Interface amigável para consumo real do modelo.
+- Azure Machine Learning (SDK v2): Orquestração completa do ciclo de vida.
+- MLflow: Tracking de métricas, parâmetros e registro do modelo (Model Registry).
+- Managed Online Endpoints: Hospedagem escalável da API de predição.
+- Azure Key Vault: Gestão segura de segredos e autenticação.
+- GitHub Actions: Automação total via CI/CD (Pipeline automatizado).
+- Conda / Docker: Ambientes isolados e reprodutíveis.
+- Streamlit: Interface amigável para consumo real do modelo.
 
 ## Estrutura do Projeto
 ```
-modelos.ipynb                # Notebook exploratório e de prototipao
+modelos.ipynb                # Notebook exploratório e de prototipação
 Telco_Customer_Churn.csv     # Base de dados original
 ml-project/
   requirements.txt           # Dependências Python
-  submit_job.py              # Submisso do pipeline de treino
+  submit_job.py              # Submissão do pipeline de treino
   config/
-    grid_search.yml          # Configuraçãoo de hiperparmetros
+    grid_search.yml          # Configuraçãoo de hiperparâmetros
   environments/
-    conda.yml                # Ambiente reprodutvel para Azure ML
+    conda.yml                # Ambiente reprodutível para Azure ML
   pipelines/
-    churn_pipeline.py        # Definio do pipeline de ML
+    churn_pipeline.py        # Definição do pipeline de ML
   src/
-    data_prep/               # Scripts de preparao de dados
+    data_prep/               # Scripts de preparação de dados
     deploy/
       deploy_model.py        # Deploy do modelo em endpoint
       score.py               # Script de inferência para Azure ML
       test_endpoint.py       # Teste automatizado do endpoint
     evaluation/
-      evaluate_gold.py       # Avaliao do modelo
+      evaluate_gold.py       # Avaliação do modelo
     training/
       train.py               # Treinamento do modelo
 .github/
@@ -59,10 +59,10 @@ ml-project/
 ## 🔍 Governança e Rastreabilidade (MLflow)
 Dentro do Azure ML Studio, cada treinamento é uma "Run" única onde você pode visualizar:
 
-Métricas em Tempo Real: F1-Score, Acurácia, Recall e Precisão logados automaticamente.
-Artefatos de Modelo: O arquivo .pkl do modelo acompanhado do preprocessor.joblib (garantindo que a transformação de dados viaje com o modelo).
-Feature Importance: Gráfico automático mostrando quais variáveis (como tipo de contrato e tempo de serviço) mais impactam o churn.
-Reprodutibilidade: O exato ambiente Conda e a versão do código usados no treino são registrados.
+- Métricas em Tempo Real: F1-Score, Acurácia, Recall e Precisão logados automaticamente.
+- Artefatos de Modelo: O arquivo .pkl do modelo acompanhado do preprocessor.joblib (garantindo que a transformação de dados viaje com o modelo).
+- Feature Importance: Gráfico automático mostrando quais variáveis (como tipo de contrato e tempo de serviço) mais impactam o churn.
+- Reprodutibilidade: O exato ambiente Conda e a versão do código usados no treino são registrados.
 
 ## 🏆 Resultados e Performance
 Modelo Campeão: model_LogisticRegression (Score Composto = 0.7521)
@@ -90,6 +90,7 @@ Excelente capacidade de detectar clientes com real probabilidade de churn, permi
 - **Aderência ao mercado:** Estrutura e práticas alinhadas com demandas reais de empresas que usam Azure ML, CI/CD e governança de dados/modelos.
 
 ---
+
 
 
 
