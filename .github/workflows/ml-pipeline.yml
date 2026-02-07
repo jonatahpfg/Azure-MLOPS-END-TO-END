@@ -53,20 +53,9 @@ jobs:
           pip install flake8 pytest black
           pip install -r requirements.txt
       
-      - name: 🎨 Run Black (Code Formatter)
-        run: |
-          black --check src/ pipelines/
-        continue-on-error: true
-      
       - name: 🔍 Run Flake8 (Linter)
         run: |
           flake8 src/ pipelines/ --max-line-length=120 --ignore=E203,W503
-        continue-on-error: true
-      
-      - name: 🧪 Run Unit Tests
-        run: |
-          # pytest tests/ --cov=src --cov-report=xml
-          echo "⚠️  Adicione testes unitários em tests/"
         continue-on-error: true
 
   # ========================================================================
@@ -163,34 +152,6 @@ jobs:
         run: |
           echo "🎉 Modelo deployado com sucesso!"
          
-         
-  # ========================================================================
-  # JOB 4: TESTES DE INTEGRAÇÃO (PÓS-DEPLOY)
-  # ========================================================================
-  integration-tests:
-    name: Integration Tests
-    runs-on: ubuntu-latest
-    needs: deploy-model
-    if: github.ref == 'refs/heads/main'
-    
-    steps:
-      - name: 📥 Checkout Code
-        uses: actions/checkout@v3
-      
-      - name: 🔐 Azure Login
-        uses: azure/login@v1
-        with:
-          creds: ${{ secrets.AZURE_CREDENTIALS }}
-      
-      - name: 🧪 Test Endpoint
-        run: |
-          echo "🧪 Testando endpoint..."
-          # Adicione scripts de teste do endpoint aqui
-          # curl -X POST <endpoint-url> -H "Authorization: Bearer <key>" -d @test_data.json
-      
-      - name: 📊 Validate Response
-        run: |
-          echo "✅ Endpoint respondendo corretamente"
 
 # ===================================================================
 # SECRETS NECESSÁRIOS (Configuradas no GitHub secrets)
